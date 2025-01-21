@@ -20,7 +20,7 @@ def compute_error(X, Y, m, b):
     error = (1/n) * np.sum((Y - Y_pred)**2)  # MSE (Mean Squared Error)
     return error
 
-# Gradyan inişi algoritmasını başlatıyoruz
+# Gradyan inişi algoritması.
 for epoch in range(epochs):
     # Modelin tahminlerini hesapla
     Y_pred = m * X + b
@@ -33,17 +33,17 @@ for epoch in range(epochs):
     m -= learning_rate * dm
     b -= learning_rate * db
 
-    # Hata fonksiyonunu yazdır (isteğe bağlı, her 100. adımda)
+    # Hata fonksiyonunu yazdır (her 100. adımda)
     if epoch % 100 == 0:
         error = compute_error(X, Y, m, b)
         print(f"Epoch {epoch}, Error {error}, m {m}, b {b}")
 
 # Eğitim tamamlandıktan sonra tahmin yap
-new_X = np.array([10, 12, 15])  # Tahmin yapmak istediğin değerler
+new_X = np.array([10, 12, 15]) 
 predictions = m * new_X + b
 print("Yeni X değerleri için tahminler:", predictions)
 
-# Sonuçları grafikte görselleştirelim
+# Sonuç grafikleri
 plt.scatter(X, Y, color='blue', label='Veri')
 plt.plot(X, m * X + b, color='red', label='Lineer Regresyon Doğrusu')
 plt.scatter(new_X, predictions, color='green', label='Tahminler')  # Yeni tahminleri işaretle
